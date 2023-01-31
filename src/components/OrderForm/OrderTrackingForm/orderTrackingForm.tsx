@@ -7,6 +7,7 @@ import { orderApi } from "../../../api";
 import { collectFormData, FormDataType, isValidZipCode } from "../../../utils/form";
 import { useOrderDataContext } from "../../../contexts/OrderDataContext";
 import { HttpStatusCode } from "../../../types/api";
+import { Order } from "../../../types/orders";
 import { AxiosError } from "axios";
 
 export interface OrderFormDataProps {
@@ -30,27 +31,34 @@ const OrderTrackingForm: React.FC<Props> = ({ setIsLoading }) => {
     return isValid;
   };
 
-  const fetchOrder = async (collectedFormData: FormDataType) => {
-    setIsLoading(true);
+  const handleFetchSuccess = (data: Order) => {
+    setIsLoading(false);
+    setOrderData(data);
+    history.push(`/order`);
+  };
 
+  const handleFetchError = (error: AxiosError) => {
+    let errorMessage;
+    if(((error as AxiosError)?.response?.status || 0) < HttpStatusCode.ServerError) {
+      errorMessage = 'Your order was not found. Please check if entered data is correct.'
+    } else {
+      errorMessage = 'Error appeared on our side. Please try later or connect our service support team.'
+    }
+    setErrorNotification(errorMessage);
+    setIsLoading(false);
+    setOrderData(null);
+  };
+
+  const fetchOrder = async (collectedFormData: FormDataType) => {
     try {
+      setIsLoading(true);
       const data = await orderApi.fetchOrder({
         zip: collectedFormData.zip.toString() || '',
         code: collectedFormData.code.toString() || ''
       });
-      setIsLoading(false);
-      setOrderData(data);
-      history.push(`/order`);
+      handleFetchSuccess(data);
     } catch (error) {
-      let errorMessage;
-      if(((error as AxiosError)?.response?.status || 0) < HttpStatusCode.ServerError) {
-        errorMessage = 'Your order was not found. Please check if entered data is correct.'
-      } else {
-        errorMessage = 'Error appeared on our side. Please try later or connect our service support team.'
-      }
-      setErrorNotification(errorMessage);
-      setIsLoading(false);
-      setOrderData(null);
+      handleFetchError(error as AxiosError);
     }
   };
 
