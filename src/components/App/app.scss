@@ -1,0 +1,37 @@
+@import "src/styles/mixins";
+
+.parcel_ {
+  &container {
+    display: flex;
+  }
+
+  &button-primary {
+    &.btn {
+      @include primaryButton;
+    }
+  }
+
+  &title {
+    @include title;
+
+    &--smaller {
+      @include smallTitle;
+    }
+  }
+
+  &sub-title {
+    @include subTitle;
+  }
+
+  &label {
+    @include label;
+  }
+
+  &details-text {
+    @include detailsText;
+  }
+
+  &details-title {
+    @include detailsTitle;
+  }
+}

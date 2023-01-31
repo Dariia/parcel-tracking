@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Khula:wght@300;400;600;700&display=swap");
+
+@import "variables";
+@import "mixins";
+
+body {
+  margin: 0;
+  font-size: $fontSizeNormal;
+  background: $bodyBackgroundColor;
+  font-family: $mainFonts;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+

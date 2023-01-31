@@ -1,0 +1,30 @@
+@import "src/styles/variables";
+
+.parcel_ {
+  &delivery-map {
+    position: relative;
+    overflow: hidden;
+
+    &-image {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &delivery-map-address {
+    font-weight: $weightBolder;
+    line-height: $lineHeightNormal;
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    width: 50%;
+  }
+
+  &delivery-button {
+    border-radius: 0 0 10px 10px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
+}

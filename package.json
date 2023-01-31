@@ -1,43 +1,109 @@
 {
-  "name": "test-app-gramarly",
-  "version": "0.1.0",
-  "private": true,
+  "name": "parcel-test-task",
+  "version": "1.0.0",
+  "private": false,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.11",
-    "@types/react": "^18.0.27",
-    "@types/react-dom": "^18.0.10",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "typescript": "^4.9.4",
-    "web-vitals": "^2.1.4"
+    "@datadog/browser-rum": "^3.10.0",
+    "@react-hook/google-optimize": "^1.2.1",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "@types/jest": "^26.0.24",
+    "@types/node": "^12.20.16",
+    "@types/react": "^17.0.14",
+    "@types/react-dom": "^17.0.9",
+    "axios": "^0.21.4",
+    "bootstrap": "^5.2.3",
+    "i18next": "^20.3.5",
+    "i18next-browser-languagedetector": "^6.1.2",
+    "i18next-http-backend": "^1.2.8",
+    "libphonenumber-js": "^1.9.47",
+    "node-sass": "^8.0.0",
+    "react": "^17.0.2",
+    "react-bootstrap": "^2.7.0",
+    "react-cookie": "^4.1.1",
+    "react-dom": "^17.0.2",
+    "react-i18next": "^11.11.4",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "sass": "^1.49.8",
+    "styled-bootstrap-grid": "^3.1.1",
+    "typescript": "^4.3.5",
+    "url-search-params-polyfill": "^8.1.1",
+    "web-vitals": "^1.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --watchAll=false",
+    "e2e": "start-server-and-test start http-get://localhost:3000 cypress:all && generate-sdlc-report",
+    "test:i": "react-scripts test",
+    "test:c": "react-scripts test --watchAll=false --coverage",
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public",
+    "cypress": "cypress open",
+    "cypress:all": "cypress run --headless --browser chrome",
+    "unit": "react-scripts test --watchAll=false",
+    "lint": "eslint ./src/ "
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "react-app/jest",
+      "plugin:cypress/recommended"
     ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ],
+    "rules": {
+      "jsx-a11y/anchor-has-content": "off"
+    }
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^6.3.4",
+    "@storybook/addon-essentials": "^6.3.4",
+    "@storybook/addon-links": "^6.3.4",
+    "@storybook/node-logger": "^6.3.4",
+    "@storybook/preset-create-react-app": "^3.2.0",
+    "@storybook/react": "^6.3.4",
+    "@testing-library/dom": "^8.1.0",
+    "@types/classnames": "^2.3.1",
+    "@types/enzyme": "^3.10.9",
+    "@types/react-router-dom": "^5.1.8",
+    "@types/styled-components": "^5.1.12",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.3",
+    "axios-mock-adapter": "^1.20.0",
+    "classnames": "^2.3.1",
+    "cypress": "^9.2.0",
+    "enzyme": "^3.11.0",
+    "eslint-plugin-cypress": "^2.11.2",
+    "mochawesome": "^6.2.2",
+    "react-helmet-async": "^1.1.2",
+    "react-refresh": "^0.9.0",
+    "start-server-and-test": "^1.13.1"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "./src/**/*.{ts,tsx}",
+      "!src/**/*{test,spec,driver,dataHooks,stories}.{ts,tsx,js,jsx}"
+    ],
+    "coveragePathIgnorePatterns": [
+      "./src/types/",
+      "./src/mocks/",
+      "./src/lang/",
+      "./src/node_modules/",
+      "./src/.*\\.d\\.ts",
+      "./src/api/mocks/",
+      "./src/index.tsx",
+      "./src/reportWebVitals.ts"
     ]
   }
 }

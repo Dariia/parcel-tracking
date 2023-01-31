@@ -1,0 +1,103 @@
+@import "src/styles/variables";
+
+@mixin title {
+  font-weight: $weightBolder;
+  font-size: $fontSizeLarge;
+  line-height: $lineHeightNormal;
+}
+
+@mixin smallTitle {
+  font-weight: $weightBolder;
+  font-size: $fontSizeSmallTitle;
+  line-height: $lineHeightNormal;
+}
+
+@mixin subTitle {
+  font-weight: $weightBold;
+  font-size: $fontSizeSubtitle;
+  line-height: $lineHeightLarge;
+}
+
+@mixin detailsTitle {
+  font-weight: $weightBold;
+  font-size: $fontSizeSmall;
+  line-height: $lineHeightNormal;
+  color: $textColorSecondary;
+}
+
+@mixin label {
+  font-weight: $weightBolder;
+  font-size: $fontSizeNormal;
+}
+
+@mixin detailsLabel {
+  font-weight: $weightBold;
+}
+
+@mixin detailsText {
+  font-weight: $weightBold;
+}
+
+@mixin cardText {
+  font-size: $fontSizeSmall;
+  line-height: $lineHeightSmall;
+}
+
+@mixin input {
+  background: $inputBgColor;
+  border: 2px solid $borderColor;
+}
+
+@mixin primaryButton {
+  background: $primaryColor;
+  box-shadow: $baseShadow;
+  border: 0;
+  line-height: $lineHeightLarge;
+  font-weight: $weightBolder;
+
+  &:hover {
+    background: $primaryColorLighter;
+  }
+
+  &:active,
+  &:focus {
+    background: $primaryColorLightest;
+  }
+}
+
+@mixin secondaryButton {
+  background: transparent;
+  padding: 8px 15px;
+  border-radius: 10px;
+  line-height: $lineHeightLarger;
+  font-weight: $weightBold;
+  background: $buttonColorSecondary;
+  color: $textColorSecondaryButton;
+  border: 2px solid $borderColorSecondary;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background: $buttonColorSecondaryHover;
+    color: $textColorSecondaryButton;
+    border-color: $borderColorSecondary;
+  }
+}
+
+@mixin centeredVertically {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+@mixin card {
+  border-radius: $cardBorderRadius;
+  box-shadow: $baseShadow;
+}
+
+@mixin cardImage {
+  @include card;
+  border-radius: 8px;
+}

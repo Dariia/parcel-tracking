@@ -1,0 +1,43 @@
+@import "src/styles/variables";
+@import "src/styles/mixins";
+
+.parcel_ {
+  &form {
+    @include centeredVertically;
+
+    .parcel_form-card {
+      @include card;
+      position: relative;
+    }
+
+    &-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: -40px;
+      position: relative;
+      z-index: 1;
+
+      .parcel_logo {
+        max-width: 80px;
+      }
+    }
+
+    &-button-wrapper {
+      border-top: 1px solid $borderColor;
+
+      .parcel_button-primary {
+        width: 100%;
+      }
+    }
+
+    .parcel_sub-title,
+    .parcel_details-title {
+      text-align: center;
+    }
+
+    .parcel-loader-wrapper {
+      border-radius: $cardBorderRadius;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+@import "src/styles/mixins";
+
+.parcel_ {
+  &order-cards {
+    @include centeredVertically;
+    align-items: stretch;
+    height: 100vh;
+  }
+}

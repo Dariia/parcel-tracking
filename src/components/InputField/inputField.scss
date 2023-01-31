@@ -1,0 +1,14 @@
+@import "src/styles/mixins";
+@import "src/styles/variables";
+
+.parcel_form {
+  &-input {
+    @include input;
+
+    &:active,
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+}

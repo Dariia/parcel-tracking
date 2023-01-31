@@ -1,0 +1,9 @@
+@import "src/styles/variables";
+
+.parcel_logo {
+  border-radius: 15px;
+  padding: 5px;
+  background: $logoBackground;
+  background: $logoGradient;
+  box-shadow: $logoShadow;
+}

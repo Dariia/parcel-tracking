@@ -1,0 +1,30 @@
+@import "src/styles/mixins";
+@import "src/styles/variables";
+
+.parcel_ {
+  &shipping-item {
+    @include cardText;
+
+    > li {
+      padding-bottom: 5px;
+    }
+  }
+
+  &shipping-card-details,
+  &shipping-progress-bar-text {
+    display: flex;
+    justify-content: space-between;
+    color: $textColorSecondary;
+    font-weight: $weightBold;
+  }
+
+  &shipping-progress-bar {
+    .progress,
+    .progress-bar {
+      border-radius: 10px;
+    }
+    .progress-bar {
+      background: $primaryColor;
+    }
+  }
+}

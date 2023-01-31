@@ -1,0 +1,13 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "video": false,
+  "videoUploadOnPasses": false,
+  "reporter": "mochawesome",
+  "ignoreTestFiles": "**/pages/*.ts",
+  "reporterOptions": {
+    "overwrite": false,
+    "json": true,
+    "html": false
+  },
+  "retries": 3
+}

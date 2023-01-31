@@ -1,0 +1,13 @@
+@import "src/styles/mixins";
+@import "src/styles/variables";
+
+.parcel_ {
+  &order-card {
+    @include card;
+
+    @media (min-width: $mediaLg) {
+      height: 410px;
+      overflow: scroll;
+    }
+  }
+}

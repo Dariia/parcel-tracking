@@ -1,0 +1,47 @@
+// Fonts
+$mainFonts: "Khula", Helvetica, Arial, sans-serif;
+$weightBold: 600;
+$weightBolder: 700;
+
+// Line heights
+$lineHeightNormal: 1em;
+$lineHeightSmall: 1.2em;
+$lineHeightLarger: 1.3em;
+$lineHeightLarge: 2em;
+
+// Font sizes
+$fontSizeNormal: 1em;
+$fontSizeLarge: 2em;
+$fontSizeSmall: 0.8em;
+$fontSizeSubtitle: 1.5em;
+$fontSizeSmallTitle: 1.3em;
+
+// Colors
+$bodyBackgroundColor: #D8E2EB;
+$primaryColor: #152A79;
+$primaryColorLighter: #102f96;
+$primaryColorLightest: #1a3cad;
+$textColorSecondaryButton: #4F5C85;
+$inputBgColor: #fafafa;
+$textColorSecondary: #555;
+$borderColor: #ededed;
+$borderColorDark: #ddd;
+$borderColorSecondary: #C5D1E6;
+$buttonColorSecondary: rgba(255, 255, 255, 0.1);
+$buttonColorSecondaryHover: rgba(255, 255, 255, 0.3);
+$loaderWrapperColor: rgba(255, 255, 255, 0.5);
+
+// Shadows
+$logoShadow: 2px 2px 5px 2px rgba(0,0,0,0.3);
+$baseShadow: 0 3px 5px 0 rgba(0, 0, 0, 0.2);
+
+// Logo
+$logoBackground: rgba(7, 27, 89, 1);
+$logoGradient: linear-gradient(50deg, rgb(7, 27, 89) 30%, rgb(12, 34, 111) 100%);
+
+// Media
+$mediaLg: 992px;
+
+// Border
+$cardBorderRadius: 15px;
+

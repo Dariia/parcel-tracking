@@ -1,46 +1,73 @@
-# Getting Started with Create React App
+# Challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is test tech task by requirements:
+[https://github.com/parcelLab/challenge-frontend-engineer](https://github.com/parcelLab/challenge-frontend-engineer)
+
+Project is created with / using tools:
+- `React cteate app` for project first installation (some structure redone)
+- `Bootstrap` / `SASS` for elements styling
+- `Storybook` for elements presentation
+- `Cypress` for automated tests
+- `React testing library` for unit tests
+- `React hooks` / `TS` for components
+- `axios` / `axios-mock-adapter` for conditional mocking of `order.json`
 
 ## Available Scripts
 
+Before beginning you need install node modules:
+run `npm install` in project root.
+
 In the project directory, you can run:
 
-### `npm start`
+### `npm run start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Runs the app in the development mode.
+Opens [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### `npm run test`
 
-### `npm test`
+Launches the test runner in the interactive watch mode.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `npm run test:c`
+
+Launches unit tests with coverage collecting.
+Coverage will be displayed in console or in ``coverage`` folder in root directory.
+
+### `npm run cypress`
+
+Will run cypress on desktop.
+
+### `npm run cypress:all`
+
+Will run all automated tests in a headless mode in chrome.
+Statistics will be available in console and in `mochawesome-report` directory in root.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Builds the app for production to the `build` folder.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `npm run storybook`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Runs project `storybook` on port [http://localhost:6000](http://localhost:6000).
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Side Notes
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- `.env.development` file in root directory holds dev process variables
+- `.env.production` file in root directory holds prod process variables
+- `Khula` font is used as most similar to design font, but free
+- app is responsive
+- all text in light gray color changed to darker color as accessibility check argued on low contrast
+- context instead of stores used by mean. We have simple app with not many states, so better to use context.
+- suggestion: would be nice to have product images of different sizes for performance optimisation (consider avif format).
+- no comments left in code, as believe that code should be self explanatory, 
+  but somewhere left TODOs expressing thoughts on improvements. 
+  
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+*Time for the challenge task was limited and needed to finish it at some point, but think there are still a lot of could be improved.*
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Screenshots
 
-## Learn More
+![alt text](https://github.com/Dariia/parcel-tracking/blob/main/public/images/screenshot-1.png?raw=true)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+![alt text](https://github.com/Dariia/parcel-tracking/blob/main/public/images/screenshot-2.png?raw=true)
