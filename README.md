@@ -3,7 +3,7 @@
 This project is test tech task by requirements:
 [https://github.com/parcelLab/challenge-frontend-engineer](https://github.com/parcelLab/challenge-frontend-engineer)
 
-Project is created with / using tools:
+Project is created with / used tools:
 - `React cteate app` for project first installation (some structure redone)
 - `Bootstrap` / `SASS` for elements styling
 - `Storybook` for elements presentation
@@ -61,7 +61,7 @@ Runs project `storybook` on port [http://localhost:6000](http://localhost:6000).
 - `.env.development` file in root directory holds dev process variables
 - `.env.production` file in root directory holds prod process variables
 - `Khula` font is used as most similar to design font, but free
-- app is responsive
+- app is responsive, has auto and unit tests, storybook
 - all text in light gray color changed to darker color as accessibility check argued on low contrast
 - context instead of stores used by mean. We have simple app with not many states, so better to use context.
 - suggestion: would be nice to have product images of different sizes for performance optimisation (consider avif format).
