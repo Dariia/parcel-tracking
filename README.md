@@ -37,10 +37,15 @@ Coverage will be displayed in console or in ``coverage`` folder in root director
 
 Will run cypress on desktop.
 
+- Before running cypress tests `npm run build` and `npm run start` need to be executed.
+
 ### `npm run cypress:all`
 
 Will run all automated tests in a headless mode in chrome.
 Statistics will be available in console and in `mochawesome-report` directory in root.
+
+- Before running cypress tests `npm run build` and `npm run start` need to be executed.
+
 
 ### `npm run build`
 
@@ -70,4 +75,4 @@ Runs project `storybook` on port [http://localhost:6000](http://localhost:6000).
 
 ![alt text](https://github.com/Dariia/parcel-tracking/blob/main/public/images/screenshot-1.png?raw=true)
 
-![alt text](https://github.com/Dariia/parcel-tracking/blob/main/public/images/screenshot-2.png?raw=true)
+![alt text](https://github.com/Dariia/parcel-tracking/blob/main/public/images/screenshot-3.png?raw=true)
