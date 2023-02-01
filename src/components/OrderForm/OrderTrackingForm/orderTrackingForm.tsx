@@ -1,14 +1,14 @@
-import React, { useState, createRef } from 'react';
+import React, { useState, createRef, useEffect } from 'react';
 import '../orderForm.scss';
 import { useHistory } from 'react-router-dom';
 import { Button, Form, Alert } from "react-bootstrap";
 import InputField from "../../InputField";
-import { orderApi } from "../../../api";
 import { collectFormData, FormDataType, isValidZipCode } from "../../../utils/form";
 import { useOrderDataContext } from "../../../contexts/OrderDataContext";
 import { HttpStatusCode } from "../../../types/api";
-import { Order } from "../../../types/orders";
 import { AxiosError } from "axios";
+import { Order } from "../../../types/orders";
+import useFetch from "../../../hooks/useFetch";
 
 export interface OrderFormDataProps {
   zip: string;
@@ -24,6 +24,7 @@ const OrderTrackingForm: React.FC<Props> = ({ setIsLoading }) => {
   const { setOrderData } = useOrderDataContext();
   const formRef = createRef<HTMLFormElement>();
   const [ errorNotification, setErrorNotification ] = useState<string | null>(null);
+  const { isLoading, error, fetchedData, fetchOrder } = useFetch();
 
   const isValidForm = (collectedFormData: FormDataType): boolean => {
     const { zip, code } = collectedFormData;
@@ -31,35 +32,8 @@ const OrderTrackingForm: React.FC<Props> = ({ setIsLoading }) => {
     return isValid;
   };
 
-  const handleFetchSuccess = (data: Order) => {
-    setIsLoading(false);
-    setOrderData(data);
-    history.push(`/order`);
-  };
-
-  const handleFetchError = (error: AxiosError) => {
-    let errorMessage;
-    if(((error as AxiosError)?.response?.status || 0) < HttpStatusCode.ServerError) {
-      errorMessage = 'Your order was not found. Please check if entered data is correct.'
-    } else {
-      errorMessage = 'Error appeared on our side. Please try later or connect our service support team.'
-    }
-    setErrorNotification(errorMessage);
-    setIsLoading(false);
-    setOrderData(null);
-  };
-
-  const fetchOrder = async (collectedFormData: FormDataType) => {
-    try {
-      setIsLoading(true);
-      const data = await orderApi.fetchOrder({
-        zip: collectedFormData.zip.toString() || '',
-        code: collectedFormData.code.toString() || ''
-      });
-      handleFetchSuccess(data);
-    } catch (error) {
-      handleFetchError(error as AxiosError);
-    }
+  const handleFormChange = () => {
+    setErrorNotification(null);
   };
 
   const handleFormSubmit = (event: React.FormEvent) => {
@@ -68,13 +42,37 @@ const OrderTrackingForm: React.FC<Props> = ({ setIsLoading }) => {
     const isValid = isValidForm(collectedFormData);
 
     isValid
-      ? fetchOrder(collectedFormData)
+      ? fetchOrder({
+        zip: collectedFormData.zip.toString() || '',
+        code: collectedFormData.code.toString() || ''
+      })
       : setErrorNotification('All fields should be filled with valid data.');
   };
 
-  const handleFormChange = () => {
-    setErrorNotification(null);
-  };
+  useEffect(() => {
+    if (!error) {
+      setErrorNotification(null);
+      return;
+    }
+
+    let errorMessage;
+    if(((error as AxiosError)?.response?.status || 0) < HttpStatusCode.ServerError) {
+      errorMessage = 'Your order was not found. Please check if entered data is correct.'
+    } else {
+      errorMessage = 'Error appeared on our side. Please try later or connect our service support team.'
+    }
+    setErrorNotification(errorMessage);
+  }, [ error ]);
+
+
+  useEffect(() => {
+    setOrderData(fetchedData as Order);
+    fetchedData && history.push('/order');
+  }, [ fetchedData, history, setOrderData ]);
+
+  useEffect(() => {
+    setIsLoading(isLoading);
+  }, [ isLoading, setIsLoading ]);
 
   return (
     <Form ref={formRef} onSubmit={handleFormSubmit} onChange={handleFormChange} data-testid="order-form">

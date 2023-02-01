@@ -79,7 +79,7 @@ describe('Order Form', () => {
     });
   });
 
-  it('calls order setOrder on valid form submit', async () => {
+  it('sets order to context on valid form submit', async () => {
     const testData = { test: 'test data' };
     apiClient.orderApi.fetchOrder = jest.fn().mockResolvedValue(testData);
     fillAndSubmitForm({ code: 'AB66666', zip: '55555' });
