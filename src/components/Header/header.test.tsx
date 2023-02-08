@@ -1,4 +1,4 @@
-import {render, screen, waitFor, within} from '@testing-library/react';
+import { render, screen, waitFor, within } from '@testing-library/react';
 import { Router } from "react-router-dom";
 import { getMockHistory } from "../../utils/testing";
 import Header from '.';
@@ -21,11 +21,11 @@ describe('Header', () => {
     expect(text.innerHTML).toEqual('sign out');
   });
 
-  it('sign out on click cleans context', async() => {
+  it('sign out on click calls history with link to home page', async() => {
     const button = screen.getByTestId('header-sign-out-button');
     button.click();
     await waitFor(() => {
-      expect(historyMock.push).toBeCalled();
+      expect(historyMock.push).toBeCalledWith('/');
     });
   });
 });

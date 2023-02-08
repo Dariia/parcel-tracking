@@ -12,7 +12,7 @@ describe('InputField', () => {
     expect(label.innerHTML).toEqual('labelText');
   });
 
-  it('renders label for attribut', () => {
+  it('renders label for attribute', () => {
     const label = screen.getByTestId('form-label');
     expect(label.getAttribute('for')).toEqual('testId');
   });
